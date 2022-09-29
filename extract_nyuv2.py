@@ -71,7 +71,7 @@ def extract_labels(labels, splits, SEG40_DIR, SEG13_DIR, save_colored=True):
         for idx in tqdm(idxs):
             lbl = labels_40[idx-1]
             path = os.path.join(SEG40_DIR, s, '%05d.png' % (idx))
-            io.imsave(path, lbl, check_contrast=False)
+            io.imsave(path, lbl + 1, check_contrast=False)
             if save_colored:
                 colored_lbl = cmap[lbl+1]
                 io.imsave('colored_40/%05d.png' % idx, colored_lbl)
@@ -84,7 +84,7 @@ def extract_labels(labels, splits, SEG40_DIR, SEG13_DIR, save_colored=True):
         for idx in tqdm(idxs):
             lbl = labels_13[idx-1]
             path = os.path.join(SEG13_DIR, s, '%05d.png' % (idx))
-            io.imsave(path, lbl, check_contrast=False)
+            io.imsave(path, lbl + 1, check_contrast=False)
             if save_colored:
                 colored_lbl = cmap[lbl+1]
                 io.imsave('colored_13/%05d.png' % idx, colored_lbl)
